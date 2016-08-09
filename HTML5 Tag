@@ -1,0 +1,28 @@
+分节元素： 与大纲有关 & 语义元素
+
+作用：
+帮助开发者组织内容，供计算机读取。
+
+大纲是用算法生成的，供屏幕阅读器来识别，那部分内容更重要。HTML5之前，是用div，人为划分章节。
+
+分节元素：
+article： 一段独立的分节内容
+aside： 与文档主要内容无关，或关系不大的内容，位于页面的侧面
+nav： 到其他页面，或网站其他区域的链接，仅对应页面的主要导航。（另外还有，内容表格，上一页下一页链接，面包屑导航，都用nav），menu应该放在nav中。
+section： 和div不能混淆，为了样式，用div，如果一段内容有标题，要生成大纲，用section。
+
+分节根元素：
+figure：figcaption为figure提供图例或说明。
+details： H5新增，用来隐藏或者显示与内容相关的附加信息。summary是details的备选元素，为details提供说明或总结。
+
+
+不是分节元素，与大纲无关。
+header：可以出现在article，aside， nav中。
+footer
+hgroup
+
+
+HTML4有一些语义标签，比如abbr， del，dfn，em，ins，kbd，samp，strong，var等
+HTML5新增的语义标签： mark， 用作参考的高亮文本； meter用来标记一个标量测量范围， 有6个属性，包括value，min，max，low，high，Optimum。
+progress用来标记需要一定时间才能完成的事件的进度的表单元素。（正在上传或下载，正在执行的计算，游戏加载）
+time用于标记日期或时间。

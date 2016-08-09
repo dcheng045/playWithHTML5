@@ -1,0 +1,4 @@
+placeholder text: 在不支持placeholder的浏览器中，用js和css结合，提供回退方案。onfocus, onblur
+autofocus: focus()
+autocomplete
+datalists

@@ -1,0 +1,43 @@
+Canvas 做游戏开发最常用
+经常用于： 股票行情，动态图像，相册，特效字体，四维图，图形编辑器。
+利用什么： JS ， cavas元素支持脚本，创建根据用户输入变化的canvas。
+能做到什么： 动画，图形，幻灯片，内建游戏
+canvas和svg，flash的区别：svg是由XML写成的完全独立的语言， flash由SWF写成。
+
+ios和android支持canvas，opera mini不支持canvas
+ios不支持flash
+andoid低版本不支持svg
+
+
+fillRect 绘制有填充的矩形
+strokeReact 绘制矩形轮廓
+clearRect 绘制空心的透明矩形
+
+fillStyle 填充色：可以是十六进制颜色，RGBA颜色，也可以是线性渐变，辐射渐变，可以添加颜色终点addColorStop
+strokeStyle 边框色
+
+绘制矩形
+createLinearGradient
+createRadialGradient
+addColorStop
+
+绘制多边形，绘制线条
+beginPath()
+closePath()
+stroke()
+fill()
+moveTo()
+lineTo()
+
+绘制圆形
+arc(x,y,radius, startAngle, endAngle, true)
+
+在canvas上书写文字
+fillText()
+font, textAlign, textBaseline
+
+显示图像
+context.drawImage(img, 10, 10)改变图像尺寸 缩放和裁切图像
+
+添加图案
+createPattern(image, repeat-x)

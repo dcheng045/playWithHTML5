@@ -1,0 +1,10 @@
+ios不支持flash，flash在linux，mac上崩溃;
+对于桌面用户来说，flash是很好的回退选择。
+如果web服务在博尚视频时出现问题，原因有可能是MIME类型没有设置正确。
+
+H5 视频编码解码器
+1. MP4 或 H.264
+2. ogg/Theora
+3. WebM
+
+track， 字幕， 屏幕解说

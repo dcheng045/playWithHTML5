@@ -1,0 +1,8 @@
+@font-face 个性化字体
+WOFF, web open font format, web开放字体格式, ios, android 都不支持
+
+HTML5和css3， 精细化排版
+
+font-wariant: small-caps  小型大写字母
+font: font-style font-wariant font-size/line-height font-family
+font: italic small-caps bold 1em/1.3em Geneva, sans-serif

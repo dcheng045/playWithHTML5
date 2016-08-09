@@ -1,0 +1,149 @@
+为什么HTML5适用于移动端开发
+1. HTML5包含了性能优良的API
+
+
+三章 用css3设计移动页面样式
+基于设备属性改变样式的媒体查询
+
+外联样式表的好处
+1. 爬虫爬得快，只爬html，不爬css
+2. 分线程下载html和css，cdn
+3. css缓存，提升网站加载速度
+
+css3，与以前的版本有什么不同？
+css3，是以模块的方式发布的，目前已经可用的模块包括颜色，选择器，背景模块， 边框模块，这些模块尚处于标准化过程中。
+
+浏览器专用扩展名，浏览器并不直接支持css3样式属性，在使用时，加上相应的关键字，以表明是浏览器专用属性。
+-moz- Firefox/Mozila
+-ms-  IE
+-wap- WAP / Opera
+-o-   Opera
+-webkit- Chrome / Safari
+
+??? 圆角，椭圆圆角，不规则椭圆圆角，四个角分别设置为不同都是可以的，具体的值怎么设
+
+四章 移动设备检测及对HTML5 的支持
+
+http://html5test.com/
+直接在浏览器中输入，得到当前浏览器对HTML5的支持情况
+
+HTML5是 将各种规范，标准及工具打包组成的庞大集合。
+
+用户几乎不会更新桌面浏览器，但是会频繁的更新移动端浏览器，因为每年换手机的时候，浏览器会更新。
+2014年移动设备用户数量超过桌面互联网用户数量，持续关注移动设备开发及HTML5应用程序，你的网站和技术将始终处于时代前沿。
+
+为甚应该检测HTML5特性，而不是检测浏览器。因为很多浏览器具有自我隐藏功能，通过发送伪造用户代理伪装成别的了浏览器， 隐私保护软件会隐藏用户代理字符串，
+即使使用用户代理相同，浏览器的特性也会有区别。
+
+检测HTML5功能的基本方法
+1. 利用全局元素检测 window 或者 navigator， 比如
+
+window.applicationCache， 检测这个特性，就能知道是否可以使用离线Web应用程序功能。
+
+function supports_geolocation() {
+  return !!navigator.geolocation;
+}
+
+2 利用创建的元素检测属性
+document.createElement('canvas').getContext()
+检测是否支持canvas
+
+3. 检测方法能否返回正确的值，
+比如使用video 和audio 的时候，需要支持相应的编码解码器，
+
+function videoCheck() {
+  return !!document.createElement('video').canPlayType;
+}
+
+function h264Check() {
+  if (!videoCheck) {
+    document.write("not");
+    return;
+  }
+  var video = document.createElement('video').canPlayType;
+  if (!video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')) {
+    document.write("not");
+  }
+  return;
+}
+
+4. 检测元素是否保留值
+
+var i = document.createElement("input");
+i.setAttribute("type", "range");
+
+if (i.type == "text") {
+  document.write("not");
+}
+
+最后介绍一个开源JS类库：Modernizr(http://www.modernizr.com/)，这就是用来封装检测HTML5和CSS3功能支持的。一定要使用最新的版本。有了这个类库，将减少我们很多的代码。
+比如：
+1, if (Modernizr.geolocation) //用于检测是否支持geolocation.
+2, if (Modernizr.canvas) //用于检测是否支持canvas.
+3, if (Modernizr.video) { //如果支持video，但需要检测支持哪种格式呢？
+  if (Modernizr.video.webm) {
+    // try WebM
+  } else if (Modernizr.video.ogg) {
+    // try Ogg Theora + Vorbis in an Ogg container
+  } else if (Modernizr.video.h264){
+    // try H.264 video + AAC audio in an MP4 container
+  }
+}
+4，if (Modernizr.inputtypes.date) //检测是否支持日期输入。
+更多
+
+
+IE如何支持HTML5怎么做？ 引用html5.js  使html5标签成块状
+HTML5 Shiv脚本
+
+下面是引用Google的html5.js文件，好处就不说了：
+
+<!--[if IE]>
+<script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
+< ![endif]-->
+
+最后在css里面加上这段：
+
+/*html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}
+主要是让这些html5标签成块状，像div那样。
+
+
+优雅降级，可以被看成是一种容错机制，理念源于系统在一个组件或多个组件错误时，应当仍能继续运行。在web开发中，
+意味着即使HTML5组件无法被浏览器完全支持时，web页面仍能继续运作。
+
+
+使用css3的media媒体查询检测浏览器
+
+比如：
+<style media ="screen">
+<link media = "screen" rel="stylesheet" href="styles.css">
+<style>
+  @media print {
+    // some style here
+  }
+</style>
+
+为小屏幕用户输出不同的样式表
+<link media = "screen and (max-width: 128px)" href="small.screen.css">
+width 对应实际浏览区域的宽度
+device-width 对应设备本身宽度
+
+<link rel="stylesheet" media = "only screen and (max-width : 480px), only screen and (max-device-width: 480px)"
+href="smartphone.css"
+only关键字，在旧浏览器上隐藏样式表。
+
+检测屏幕方向
+only screen and (orientation: landscape)
+only screen and (orientation: portrait)
+
+检测屏幕纵横比
+only screen and (aspect-ratio: 16/9)
+only screen and (aspect-ratio: 4/3)
+
+检测颜色
+color
+color-index
+monochrome检测是否是单色显示
+
+检测分辨率

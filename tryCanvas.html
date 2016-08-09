@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<script>
+  function drawSquare() {
+    var canvas = document.getElementById("canvas1");
+    var context = canvas. getContext("2d"); // 将环境设为二维
+    context.fillStyle = "rgb(13,118,208)";
+    context.fillRect(30, 30, 150, 150); // 绘出四边相等的矩形
+  }
+
+  function eraseSquare() {
+    var canvas = document.getElementById("canvas1");
+    canvas.width = canvas.width;
+  }
+</script>
+<style>
+  #canvas1 {
+    border: solid thin red;
+  }
+</style>
+</head>
+<body onload="drawSquare()">
+  <canvas width="350" height="450" id="canvas1" onclick="eraseSquare()">Content of canvas</canvas>
+</body>
+</html>
